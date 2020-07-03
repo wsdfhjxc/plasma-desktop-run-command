@@ -36,7 +36,7 @@ void RunCommand::save(KConfigGroup& config) {
 
 void RunCommand::runCommand() {
     if (!commandToRun.isEmpty()) {
-        system(QString("(" + commandToRun + ")&").toStdString().c_str());
+        system(QString("(" + commandToRun + ") & disown").toStdString().c_str());
     }
 }
 
