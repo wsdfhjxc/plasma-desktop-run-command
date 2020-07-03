@@ -2,13 +2,13 @@
 Name=Run Command
 Comment=Mouse action for running a command
 Type=Service
-ServiceTypes=Plasma/ContainmentActions
-X-KDE-Library=plasma_containmentactions_runcommand
+
 X-KDE-PluginInfo-Author=wsdfhjxc
-X-KDE-PluginInfo-Email=ws@dfhjxc.me
-X-KDE-PluginInfo-Website=https://github.com/wsdfhjxc/plasma-desktop-run-command
-X-KDE-PluginInfo-Name=org.kde.runcommand
-X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Name=run-command
+X-KDE-PluginInfo-Version=0.2
 X-KDE-PluginInfo-License=GPLv2
 X-KDE-PluginInfo-EnabledByDefault=true
+
+X-KDE-ServiceTypes=Plasma/ContainmentActions
+X-KDE-Library=plasma_containmentactions_runcommand
 X-Plasma-HasConfigurationInterface=true
