@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
 project(plasma_containmentactions_runcommand)
 
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 find_package(ECM REQUIRED NO_MODULE)
 
 set(CMAKE_AUTOUIC ON)
