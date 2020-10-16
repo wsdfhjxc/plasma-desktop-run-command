@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>Config</class>
-    <widget class="QWidget" name="Config">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>500</width>
-                <height>100</height>
-            </rect>
-        </property>
-        <layout class="QHBoxLayout" name="verticalLayout">
-            <item>
-                <widget class="QLabel" name="label">
-                    <property name="text">
-                        <string>Command to run:</string>
-                    </property>
-                </widget>
-            </item>
-            <item>
-                <widget class="QLineEdit" name="commandToRun">
-                    <property name="placeholderText">
-                        <string>e.g. konsole</string>
-                    </property>
-                </widget>
-            </item>
-        </layout>
-    </widget>
-    <resources/>
-    <connections/>
+  <class>Config</class>
+  <widget class="QWidget" name="Config">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>500</width>
+        <height>100</height>
+      </rect>
+    </property>
+    <layout class="QHBoxLayout" name="verticalLayout">
+      <item>
+        <widget class="QLabel" name="label">
+          <property name="text">
+            <string>Command to run:</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QLineEdit" name="commandToRun">
+          <property name="placeholderText">
+            <string>e.g. konsole</string>
+          </property>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <resources/>
+  <connections/>
 </ui>
