@@ -1,7 +1,16 @@
 #pragma once
 
-#include "ui_config.h"
+#include <QList>
+#include <QObject>
+#include <QString>
+#include <QVariantList>
+#include <QWidget>
+
+#include <KConfigGroup>
+
 #include <Plasma/ContainmentActions>
+
+#include "ui_config.h"
 
 class QAction;
 
