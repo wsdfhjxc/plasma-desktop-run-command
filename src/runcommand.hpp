@@ -27,6 +27,9 @@ public:
     void restore(const KConfigGroup& config) override;
     void save(KConfigGroup& config) override;
 
+    void performNextAction() override;
+    void performPreviousAction() override;
+
 private Q_SLOTS:
     void runCommand();
 

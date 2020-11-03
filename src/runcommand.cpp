@@ -34,6 +34,14 @@ void RunCommand::save(KConfigGroup& config) {
     config.writeEntry(QStringLiteral("commandToRun"), commandToRun);
 }
 
+void RunCommand::performNextAction() {
+    runCommand();
+}
+
+void RunCommand::performPreviousAction() {
+    runCommand();
+}
+
 void RunCommand::runCommand() {
     if (!commandToRun.isEmpty()) {
         system(QString("(" + commandToRun + ") & disown").toStdString().c_str());
