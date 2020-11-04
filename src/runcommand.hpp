@@ -30,8 +30,14 @@ public:
     void performNextAction() override;
     void performPreviousAction() override;
 
+    enum ActionType {
+        Click = 1,
+        ScrollUp = 2,
+        ScrollDown = 3
+    };
+
 private Q_SLOTS:
-    void runCommand();
+    void runCommand(int actionType = 1);
 
 private:
     QAction* action;

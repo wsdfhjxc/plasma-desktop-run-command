@@ -35,16 +35,27 @@ void RunCommand::save(KConfigGroup& config) {
 }
 
 void RunCommand::performNextAction() {
-    runCommand();
+    runCommand(ActionType::ScrollDown);
 }
 
 void RunCommand::performPreviousAction() {
-    runCommand();
+    runCommand(ActionType::ScrollUp);
 }
 
-void RunCommand::runCommand() {
+void RunCommand::runCommand(int actionType) {
     if (!commandToRun.isEmpty()) {
-        system(QString("(" + commandToRun + ") & disown").toStdString().c_str());
+        QString command = commandToRun;
+
+        QString scrollReplacement;
+        if (actionType == ActionType::ScrollUp) {
+            scrollReplacement = "UP";
+        } else if (actionType == ActionType::ScrollDown) {
+            scrollReplacement = "DOWN";
+        }
+
+        command.replace("$SCROLL", scrollReplacement);
+
+        system(QString("(" + command + ") & disown").toStdString().c_str());
     }
 }
 
