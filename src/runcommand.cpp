@@ -1,6 +1,7 @@
 #include "runcommand.hpp"
 
 #include <QAction>
+#include <QIcon>
 
 RunCommand::RunCommand(QObject* parent, const QVariantList& args)
         : Plasma::ContainmentActions(parent, args) {
@@ -19,6 +20,14 @@ QWidget* RunCommand::createConfigurationInterface(QWidget* parent) {
     widget->setWindowTitle("Configure Run Command");
     configUi.setupUi(widget);
     configUi.commandToRun->setText(commandToRun);
+    configUi.hintButton->setIcon(QIcon::fromTheme("help-contextual"));
+    configUi.hintButton->setIconSize(QSize(20, 20));
+    configUi.hintButton->setFocusPolicy(Qt::NoFocus);
+    configUi.hintButton->setStyleSheet("QPushButton { border: none; }");
+    configUi.hintButton->setToolTip("Available variables:<br><br>"
+                                    "<tt>$SCROLL</tt> = \"UP\" or \"DOWN\"<br>"
+                                    "(only for a mouse wheel scrolling action)<br><br>"
+                                    "Can be passed as an argument for a script");
     return widget;
 }
 
