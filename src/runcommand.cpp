@@ -64,7 +64,7 @@ void RunCommand::runCommand(int actionType) {
 
         command.replace("$SCROLL", scrollReplacement);
 
-        system(QString("(" + command + ") & disown").toStdString().c_str());
+        system(QString("(" + command + ") &").toStdString().c_str());
     }
 }
 
