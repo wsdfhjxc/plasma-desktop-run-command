@@ -3,21 +3,17 @@
 #include <QAction>
 #include <QIcon>
 
-RunCommand::RunCommand(QObject* parent, const QVariantList& args)
-        : Plasma::ContainmentActions(parent, args) {
+RunCommand::RunCommand(QObject* parent, const QVariantList& args) :
+        Plasma::ContainmentActions(parent, args) {
+
     action = new QAction(this);
     QObject::connect(action, &QAction::triggered, this, &RunCommand::runCommand);
-}
-
-QList<QAction*> RunCommand::contextualActions() {
-    QList<QAction*> actions;
-    actions << action;
-    return actions;
 }
 
 QWidget* RunCommand::createConfigurationInterface(QWidget* parent) {
     QWidget* widget = new QWidget(parent);
     widget->setWindowTitle("Configure Run Command");
+
     configUi.setupUi(widget);
     configUi.commandToRun->setText(commandToRun);
     configUi.hintButton->setIcon(QIcon::fromTheme("help-contextual"));
@@ -43,6 +39,12 @@ void RunCommand::save(KConfigGroup& config) {
     config.writeEntry(QStringLiteral("commandToRun"), commandToRun);
 }
 
+QList<QAction*> RunCommand::contextualActions() {
+    QList<QAction*> actions;
+    actions << action;
+    return actions;
+}
+
 void RunCommand::performNextAction() {
     runCommand(ActionType::ScrollDown);
 }
@@ -63,7 +65,6 @@ void RunCommand::runCommand(int actionType) {
         }
 
         command.replace("$SCROLL", scrollReplacement);
-
         system(QString("(" + command + ") &").toStdString().c_str());
     }
 }

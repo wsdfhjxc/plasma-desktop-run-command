@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QAction>
 #include <QList>
 #include <QObject>
 #include <QString>
@@ -12,21 +13,18 @@
 
 #include "ui_config.h"
 
-class QAction;
-
 class RunCommand : public Plasma::ContainmentActions {
     Q_OBJECT
 
 public:
     RunCommand(QObject* parent, const QVariantList& args);
 
-    QList<QAction*> contextualActions() override;
-
     QWidget* createConfigurationInterface(QWidget* parent) override;
     void configurationAccepted() override;
     void restore(const KConfigGroup& config) override;
     void save(KConfigGroup& config) override;
 
+    QList<QAction*> contextualActions() override;
     void performNextAction() override;
     void performPreviousAction() override;
 
@@ -41,7 +39,6 @@ private Q_SLOTS:
 
 private:
     QAction* action;
-
     Ui::Config configUi;
     QString commandToRun;
 };
