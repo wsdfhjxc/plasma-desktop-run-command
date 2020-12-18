@@ -11,7 +11,7 @@
 
 #include <Plasma/ContainmentActions>
 
-#include "ui_config.h"
+#include "ui_Config.h"
 
 class RunCommand : public Plasma::ContainmentActions {
     Q_OBJECT

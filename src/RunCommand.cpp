@@ -1,4 +1,4 @@
-#include "runcommand.hpp"
+#include "RunCommand.hpp"
 
 #include <QAction>
 #include <QIcon>
@@ -69,6 +69,6 @@ void RunCommand::runCommand(int actionType) {
     }
 }
 
-K_EXPORT_PLASMA_CONTAINMENTACTIONS_WITH_JSON(runcommand, RunCommand, "plasma-containmentactions-runcommand.json")
+K_EXPORT_PLASMA_CONTAINMENTACTIONS_WITH_JSON(RunCommand, RunCommand, "metadata.json")
 
-#include "runcommand.moc"
+#include "RunCommand.moc"
