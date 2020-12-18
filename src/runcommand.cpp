@@ -26,7 +26,7 @@ QWidget* RunCommand::createConfigurationInterface(QWidget* parent) {
     configUi.hintButton->setStyleSheet("QPushButton { border: none; }");
     configUi.hintButton->setToolTip("Available variables:<br><br>"
                                     "<tt>$SCROLL</tt> = \"UP\" or \"DOWN\"<br>"
-                                    "(only for a mouse wheel scrolling action)<br><br>"
+                                    "(only for a mouse wheel scroll action)<br><br>"
                                     "Can be passed as an argument for a script");
     return widget;
 }
