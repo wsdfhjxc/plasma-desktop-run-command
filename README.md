@@ -24,15 +24,16 @@ Note: To uninstall the plugin, run: `./helper.sh uninstall`
 
 1. Open the Desktop Settings and the Mouse Actions tab
 2. Click the Add Action button (it'll turn into the Input Here button)
-3. Keep the mouse cursor over the button and assign an action event:
+3. Assign an action event by interacting with the button:
     - either press the right mouse button,
     - or press the mouse wheel button,
     - or scroll the mouse wheel up or down
 4. Select Run Command from the list
 5. Click a button to open the configuration dialog
 6. Enter the command to be run when the event occurs
-    - For a mouse wheel scroll event, you can use the `$SCROLL` variable, that has either "UP" or "DOWN" value and which can be passed as an argument for a program or script, so it can do something conditionally.
 7. Click OK and then Apply in the parent configuration dialog
+
+Note: As for the command, for a mouse wheel scroll action you can also use the `$SCROLL` variable, that has either "UP" or "DOWN" value, and which can be, for example, passed as an input argument for a script, so it can do something conditionally (change screen's brightness, or similar ideas).
 
 ## License
 
