@@ -6,27 +6,27 @@ printUsage() {
 }
 
 build() {
-    mkdir -p build
-    cd build || exit 1
-
+    mkdir -p build && \
+    cd build && \
     cmake .. && \
-    make clean && \
     make && cd .. || {
         cd ..
-        exit 1
+        return 1
     }
 }
 
 install() {
-    build && cd build || exit 1
+    build && \
+    cd build && \
     sudo make install && cd .. || {
         cd ..
-        exit 1
+        return 1
     }
 }
 
 uninstall() {
-    cd build || install
+    install && \
+    cd build || return 1
 
     [[ -f install_manifest.txt ]] || {
         install
@@ -34,7 +34,7 @@ uninstall() {
 
     sudo make uninstall && cd .. || {
         cd ..
-        exit 1
+        return 1
     }
 }
 
