@@ -1,59 +1,66 @@
 #!/bin/bash
 
 printUsage() {
-    echo "Usage: helper.sh build|install|uninstall"
-    echo "   or: helper.sh installBuildDependencies ubuntu|fedora|opensuse|arch"
+    echo "Usage: helper.sh build|install|uninstall|upgrade"
+    echo "   or: helper.sh package deb|rpm distro-name qt5-lib-dir-path"
 }
 
 build() {
     mkdir -p build && \
     cd build && \
-    cmake .. && \
-    make && cd .. || {
-        cd ..
-        return 1
-    }
+    cmake .. && make || exit 1
 }
 
 install() {
-    build && \
-    cd build && \
-    sudo make install && cd .. || {
-        cd ..
-        return 1
-    }
+    build && sudo make install || exit 1
 }
 
 uninstall() {
-    install && \
-    cd build || return 1
-
-    [[ -f install_manifest.txt ]] || {
-        install
-    }
-
-    sudo make uninstall && cd .. || {
-        cd ..
-        return 1
-    }
+    install || exit 1
+    [[ -f install_manifest.txt ]] || install || exit 1
+    sudo make uninstall || exit 1
 }
 
-installBuildDependencies() {
-    case $1 in
-        ubuntu)
-            sudo apt install g++ cmake extra-cmake-modules qtbase5-dev libkf5plasma-dev
-            ;;
+upgrade() {
+    install || exit 1
+}
 
-        fedora)
-            sudo dnf install gcc-c++ cmake extra-cmake-modules qt5-qtbase-devel kf5-plasma-devel
-            ;;
+package() {
+    local pkg=$1
+    local distro=$2
+    local qt5Dir=$3
 
-        opensuse)
-            sudo zypper in gcc-c++ cmake extra-cmake-modules libqt5-qtbase-devel plasma-framework-devel
-            ;;
+    [[ $# -lt 3 ]] && {
+        printUsage
+        exit 1
+    }
 
-        arch)
-            sudo pacman -S gcc cmake extra-cmake-modules
+    [[ -d build ]] || (build)
+
+    # Requirements: fpm
+    # https://fpm.readthedocs.io
+
+    local readonly name=plasma-desktop-run-command
+    local readonly version=$(grep -Po "Version=\K(.*)" src/metadata.desktop)
+    local readonly package=NAME-VERSION-$distro-ARCH.TYPE
+    local readonly maintainer=https://github.com/wsdfhjxc
+    local readonly url=https://github.com/wsdfhjxc/plasma-desktop-run-command
+    local readonly description="See the project's homepage for more information"
+
+    fpm --input-type dir --output-type $pkg \
+    --name $name --version $version --package $package \
+    --maintainer $maintainer --url $url --description "$description" \
+    build/plasma_containmentactions_runcommand.so=$qt5Dir/plugins/plasma/containmentactions/
+}
+
+main() {
+    local command=$1
+
+    shift
+
+    case $command in
+        build|install|uninstall|upgrade|package)
+            $command $*
             ;;
 
         *)
@@ -63,25 +70,4 @@ installBuildDependencies() {
     esac
 }
 
-case $1 in
-    build)
-        build
-        ;;
-
-    install)
-        install
-        ;;
-
-    uninstall)
-        uninstall
-        ;;
-
-    installBuildDependencies)
-        installBuildDependencies "$2"
-        ;;
-
-    *)
-        printUsage
-        exit 1
-        ;;
-esac
+main $*
