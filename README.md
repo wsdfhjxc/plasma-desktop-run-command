@@ -6,6 +6,7 @@ This is a simple plugin for KDE Plasma which allows running a custom command, by
 
 - [Screenshot](#screenshot)
 - [Installation](#installation)
+  - [Packages](#packages)
   - [From source](#from-source)
 - [Configuration](#configuration)
 - [License](#license)
@@ -15,6 +16,14 @@ This is a simple plugin for KDE Plasma which allows running a custom command, by
 ![](screenshot.png)
 
 ## Installation
+
+### Packages
+
+Ubuntu, Fedora and openSUSE Tumbleweed users can visit the [releases section](https://github.com/wsdfhjxc/plasma-desktop-run-command/releases).
+
+Note: The minimum supported distro's version is indicated in the filename of a given package.
+
+At the moment, there are no maintained repositories, or prebuilt packages for other Linux distributions.
 
 ### From source
 
