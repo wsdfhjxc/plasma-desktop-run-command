@@ -10,6 +10,7 @@ This is a simple plugin for KDE Plasma which allows running a custom command, by
   - [From source](#from-source)
 - [Configuration](#configuration)
 - [License](#license)
+- [Changelog](#changelog)
 
 ## Screenshot
 
@@ -21,7 +22,7 @@ This is a simple plugin for KDE Plasma which allows running a custom command, by
 
 Ubuntu, Fedora and openSUSE Tumbleweed users can visit the [releases section](https://github.com/wsdfhjxc/plasma-desktop-run-command/releases).
 
-Note: The minimum supported distro's version is indicated in the filename of a given package.
+> *Note:* The minimum supported distro's version is indicated in the filename of a given package.
 
 At the moment, there are no maintained repositories, or prebuilt packages for other Linux distributions.
 
@@ -49,11 +50,7 @@ git checkout master -- helper.sh
 ./helper.sh install
 ```
 
-Note: To uninstall the plugin, run:
-
-```
-./helper.sh uninstall
-```
+> *Note:* To uninstall the plugin, run: `./helper.sh uninstall`
 
 ## Configuration
 
@@ -68,8 +65,12 @@ Note: To uninstall the plugin, run:
 6. Enter the command to be run when the event occurs
 7. Click OK and then Apply in the parent configuration dialog
 
-Note: As for the body of the command, for a mouse wheel scroll action you can also use the `$SCROLL` variable, that has either "UP" or "DOWN" value, and which can be, for example, passed as an input argument for a script.
+> *Note:* As for the body of the command, for a mouse wheel scroll action you can also use the `$SCROLL` variable, that has either "UP" or "DOWN" value, and which can be, for example, passed as an input argument for a script.
 
 ## License
 
 [GNU General Public License v3.0](LICENSE)
+
+## Changelog
+
+Changes are listed [here](CHANGELOG.md) and in the [releases section](https://github.com/wsdfhjxc/plasma-desktop-run-command/releases).
